@@ -1,17 +1,18 @@
 public class MergeSort {
 
-  public static void mergeSort(int[] arr) {
-    mergeSortBetween(arr, new int[arr.length], 0, arr.length - 1);
+  public static void sort(int[] arr) {
+    sortBetween(arr, new int[arr.length], 0, arr.length - 1);
   }
 
-  private static void mergeSortBetween(int[] arr, int[] aux, int startIdx, int endIdx) {
+  private static void sortBetween(int[] arr, int[] aux, int startIdx, int endIdx) {
+    System.out.println(java.util.Arrays.toString(arr));
     if (startIdx >= endIdx) {
       return;
     }
 
-    int midIdx = (((endIdx - startIdx) + 1) / 2) + startIdx;
-    mergeSortBetween(arr, aux, startIdx, midIdx - 1);
-    mergeSortBetween(arr, aux, midIdx, endIdx);
+    int midIdx = (startIdx + endIdx + 1) / 2;
+    sortBetween(arr, aux, startIdx, midIdx - 1);
+    sortBetween(arr, aux, midIdx, endIdx);
     merge(arr, aux, startIdx, midIdx - 1, midIdx, endIdx);
   }
 
@@ -46,12 +47,8 @@ public class MergeSort {
   }
 
   public static void main(String[] args) {
-    // int[] to_merge = {1, 3, 4, 5, 2, 6, 7, 8};
-    // merge(to_merge, new int[8], 0, 3, 4, 7);
-    // System.out.println(java.util.Arrays.toString(to_merge));
-
-    int[] subject = {7, 4, 5, 1, 8, 3, 2, 6};
-    mergeSort(subject);
+    int[] subject = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+    sort(subject);
     System.out.println(java.util.Arrays.toString(subject));
   }
 
